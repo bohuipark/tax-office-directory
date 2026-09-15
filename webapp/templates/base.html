@@ -11,7 +11,7 @@
 </head>
 <body>
 <header class="site-header">
-    <div class="container">
+    <div class="container site-header-row">
         <a href="{{ url_for('main.index') }}" class="site-brand">
             <img src="{{ url_for('static', filename='img/nts_logo.png') }}" alt="국세청" class="site-brand-logo">
             <span class="site-brand-divider"></span>
@@ -20,14 +20,22 @@
                 <small>조직과 기능 바로가기</small>
             </span>
         </a>
+        <span class="for-etners-badge">
+            <span class="for-etners-label">for</span>
+            <img src="{{ url_for('static', filename='img/etners_logo.png') }}" alt="etners" class="for-etners-logo">
+        </span>
     </div>
 </header>
 <div class="container py-5">
     {% block content %}{% endblock %}
 </div>
 <footer class="site-footer">
-    <div class="container">
-        세무서 정보는 국세청 공식 자료를 기준으로 하며, 조직 개편에 따라 변경될 수 있습니다.
+    <div class="container site-footer-row">
+        <img src="{{ url_for('static', filename='img/eton_mascot.png') }}" alt="이튼이" class="footer-mascot">
+        <span>
+            세무서 정보는 국세청 공식 자료를 기준으로 하며, 조직 개편에 따라 변경될 수 있습니다.<br>
+            <span class="footer-made-for">Made for <img src="{{ url_for('static', filename='img/etners_logo.png') }}" alt="etners" class="footer-etners-logo"> employees</span>
+        </span>
     </div>
 </footer>
 </body>
