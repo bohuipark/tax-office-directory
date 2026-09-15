@@ -1,33 +1,292 @@
-body {
-    background: #ffffff;
-    color: #212529;
+:root {
+    --bg: #f2f5f4;
+    --surface: #ffffff;
+    --surface-2: #eaf0ed;
+    --ink: #1b2a2f;
+    --muted: #5c6f6a;
+    --line: #dbe4e0;
+    --accent: #0f6e5c;
+    --accent-ink: #0b5546;
+    --accent-soft: #e2f2ee;
+    --gold: #b9862f;
+    --gold-soft: #f8efdd;
+    --shadow: 0 1px 2px rgba(20, 40, 35, 0.04), 0 8px 20px rgba(20, 40, 35, 0.06);
 }
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", "Segoe UI", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body > .container.py-5 {
+    flex: 1;
+}
+
+h1, h2, h3, .site-brand-text strong {
+    font-family: "Noto Serif KR", "Noto Sans KR", serif;
+}
+
+.mono, .phone-mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- header / footer ---------- */
+.site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+}
+
+.site-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+}
+
+.site-brand-logo {
+    height: 32px;
+    width: auto;
+}
+
+.site-brand-divider {
+    width: 1px;
+    height: 26px;
+    background: var(--line);
+}
+
+.site-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+.site-brand-text strong {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.site-brand-text small {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.site-footer {
+    border-top: 1px solid var(--line);
+    padding: 18px 0;
+    color: var(--muted);
+    font-size: 12.5px;
+    text-align: center;
+}
+
+/* ---------- page intro ---------- */
+.page-intro h1 {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.page-intro p {
+    color: var(--muted);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent-ink);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* ---------- region cards (main page) ---------- */
 .region-card {
-    border: 1px solid #e5e7eb;
-    transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    overflow: hidden;
+}
+
+.region-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--accent);
 }
 
 .region-card:hover {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(20, 40, 35, 0.06), 0 16px 28px rgba(20, 40, 35, 0.1);
 }
 
-.card-title {
-    color: #1f2937;
+.region-card .card-body {
+    padding-left: 26px;
+}
+
+.region-name {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 18px;
+}
+
+.region-area {
+    color: var(--muted);
+    font-size: 13.5px;
+    margin-bottom: 14px;
+}
+
+.region-count {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--gold-soft);
+    border-radius: 999px;
+    padding: 3px 12px;
+    font-size: 13px;
+}
+
+/* ---------- region detail page ---------- */
+.region-heading {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 14px;
+    margin-bottom: 28px;
+}
+
+.region-heading h1 {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.region-heading .region-area {
+    margin-bottom: 0;
+}
+
+.province-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+}
+
+.province-heading .bar {
+    width: 4px;
+    height: 16px;
+    background: var(--gold);
+    border-radius: 2px;
+}
+
+.province-heading h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    margin: 0;
+    text-transform: none;
 }
 
 .office-btn {
     font-size: 0.9rem;
-    padding: 0.55rem 0.5rem;
+    font-weight: 500;
+    padding: 0.6rem 0.5rem;
+    border-radius: 9px;
+    border: 1px solid var(--accent);
+    color: var(--accent-ink);
+    background: var(--surface);
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
+.office-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* ---------- office detail page ---------- */
 .office-detail-card {
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.office-detail-card .card-header-bar {
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 28px;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+}
+
+.office-detail-card .card-body {
+    padding: 40px 28px;
+    text-align: center;
+}
+
+.office-name {
+    font-weight: 700;
+    margin: 4px 0 28px;
 }
 
 .org-url-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.85rem 1.6rem;
+    font-weight: 700;
     letter-spacing: 0.01em;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.org-url-btn:hover {
+    background: var(--accent-ink);
+    border-color: var(--accent-ink);
+}
+
+.office-phone-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--muted);
+    font-size: 13.5px;
+}
+
+.office-phone-row .phone-mono {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.office-note {
+    color: var(--muted);
+    font-size: 12.5px;
+    margin-top: 18px;
 }

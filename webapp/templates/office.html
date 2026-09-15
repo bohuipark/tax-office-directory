@@ -3,24 +3,26 @@
 {% block title %}{{ office.name }} - 전국 세무서 조직과 기능 바로가기{% endblock %}
 
 {% block content %}
-<a href="{{ url_for('main.region_detail', region_id=office.region_id) }}" class="link-secondary mb-4 d-inline-block">
+<a href="{{ url_for('main.region_detail', region_id=office.region_id) }}" class="back-link">
     &larr; {{ office.region_name }} 목록으로
 </a>
 
-<div class="card shadow-sm office-detail-card">
-    <div class="card-body text-center py-5">
-        <p class="text-muted mb-1">{{ office.region_name }} · {{ office.province }}</p>
-        <h1 class="h3 fw-bold mb-4">{{ office.name }}</h1>
+<div class="office-detail-card">
+    <div class="card-header-bar">{{ office.region_name }} · {{ office.province }}</div>
+    <div class="card-body">
+        <h1 class="h3 office-name">{{ office.name }}</h1>
         <a href="{{ office.org_url }}"
            target="_blank"
            rel="noopener noreferrer"
            class="btn btn-primary btn-lg org-url-btn">
-            조직과 기능 바로가기
+            조직과 기능 바로가기 ↗
         </a>
-        <p class="text-muted small mt-3 mb-0">
-            국세청 공식 사이트의 담당 부서·전화번호가 담긴 "조직과 기능" 페이지가 새 탭에서 열립니다.
-            (대표전화: {{ office.phone }})
-        </p>
+        <div>
+            <span class="office-phone-row">
+                📞 대표전화 <span class="phone-mono">{{ office.phone }}</span>
+            </span>
+        </div>
+        <p class="office-note">국세청 공식 사이트의 담당 부서·전화번호가 담긴 페이지가 새 탭에서 열립니다.</p>
     </div>
 </div>
 {% endblock %}

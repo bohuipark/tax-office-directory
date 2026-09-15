@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<header class="text-center mb-5">
-    <h1 class="fw-bold">전국 세무서 전화번호 안내</h1>
-    <p class="text-muted">관할 지방국세청을 선택한 뒤, 본인 지역의 세무서를 선택하세요.</p>
+<header class="page-intro text-center mb-5">
+    <h1 class="fw-bold">전국 세무서 조직과 기능 바로가기</h1>
+    <p class="mb-0">관할 지방국세청을 선택한 뒤, 본인 지역의 세무서를 선택하세요.</p>
 </header>
 
 <div class="row g-4">
     {% for region in regions %}
     <div class="col-12 col-sm-6 col-lg-4">
         <a href="{{ url_for('main.region_detail', region_id=region.id) }}" class="text-decoration-none">
-            <div class="card h-100 shadow-sm region-card">
+            <div class="region-card h-100">
                 <div class="card-body">
-                    <h2 class="h5 card-title fw-bold">{{ region.name }}</h2>
-                    <p class="card-text text-muted mb-1">관할: {{ region.area }}</p>
-                    <p class="card-text small text-primary fw-bold mb-0">{{ count(region) }}개 세무서</p>
+                    <h2 class="region-name">{{ region.name }}</h2>
+                    <p class="region-area">관할: {{ region.area }}</p>
+                    <span class="region-count">{{ count(region) }}개 세무서</span>
                 </div>
             </div>
         </a>

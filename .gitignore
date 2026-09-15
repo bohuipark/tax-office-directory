@@ -5,3 +5,5 @@ __pycache__/
 venv/
 .claude/
 server*.log
+
+.vercel
