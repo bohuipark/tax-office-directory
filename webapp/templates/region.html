@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ region.name }} - 전국 세무서 전화번호 안내{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('main.index') }}" class="link-secondary mb-4 d-inline-block">&larr; 지방국세청 목록으로</a>
+
+<header class="mb-5">
+    <h1 class="h3 fw-bold">{{ region.name }}</h1>
+    <p class="text-muted mb-0">관할: {{ region.area }}</p>
+</header>
+
+{% for group in region.groups %}
+<h2 class="h6 fw-bold text-muted mb-3">{{ group.province }}</h2>
+<div class="row g-3 mb-4">
+    {% for office_id, name, phone in group.offices %}
+    <div class="col-6 col-sm-4 col-lg-3">
+        <a href="{{ url_for('main.office_detail', region_id=region.id, office_id=office_id) }}"
+           class="btn btn-outline-primary w-100 office-btn">
+            {{ name }}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}
