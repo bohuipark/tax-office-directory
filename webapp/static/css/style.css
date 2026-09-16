@@ -10,6 +10,8 @@
     --accent-soft: #e2f2ee;
     --gold: #b9862f;
     --gold-soft: #f8efdd;
+    --etners-orange: #f4732c;
+    --etners-orange-soft: #fdece2;
     --shadow: 0 1px 2px rgba(20, 40, 35, 0.04), 0 8px 20px rgba(20, 40, 35, 0.06);
 }
 
@@ -251,6 +253,24 @@ h1, h2, h3, .site-brand-text strong {
 .quicklink-card .external-icon {
     font-size: 14px;
     color: var(--gold);
+}
+
+.quicklink-card-orange::before {
+    background: var(--etners-orange);
+}
+
+.quicklink-card-orange .external-icon {
+    color: var(--etners-orange);
+}
+
+.quicklink-card-orange .region-count {
+    color: var(--etners-orange);
+    background: var(--etners-orange-soft);
+}
+
+.quicklink-card-logo {
+    height: 18px;
+    width: auto;
 }
 
 /* ---------- region detail page ---------- */
